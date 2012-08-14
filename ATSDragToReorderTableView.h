@@ -93,18 +93,18 @@
 #import <QuartzCore/CADisplayLink.h>
 #import <QuartzCore/CALayer.h>
 
-@class ATSDragToReorderTableViewController;
+@class ATSDragToReorderTableView;
 
-@protocol ATSDragToReorderTableViewControllerDelegate
+@protocol ATSDragToReorderTableViewDelegate
 @optional
 
-- (void)dragTableViewController:(ATSDragToReorderTableViewController *)dragTableViewController didBeginDraggingAtRow:(NSIndexPath *)dragRow;
-- (void)dragTableViewController:(ATSDragToReorderTableViewController *)dragTableViewController willEndDraggingToRow:(NSIndexPath *)destinationRow;
+- (void)dragTableViewController:(ATSDragToReorderTableView *)dragTableViewController didBeginDraggingAtRow:(NSIndexPath *)dragRow;
+- (void)dragTableViewController:(ATSDragToReorderTableView *)dragTableViewController willEndDraggingToRow:(NSIndexPath *)destinationRow;
 
 @end
 
 
-@protocol ATSDragToReorderTableViewControllerDraggableIndicators
+@protocol ATSDragToReorderTableViewDraggableIndicators
 @required
 /*******
  *
@@ -117,20 +117,20 @@
 
 //	Customize cell to appear draggable. Will be called inside an animation block.
 //	Cell will have highlighted set to YES, animated NO. (changes are to the selectedBackgroundView if it exists)
-- (void)dragTableViewController:(ATSDragToReorderTableViewController *)dragTableViewController addDraggableIndicatorsToCell:(UITableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath;
+- (void)dragTableViewController:(ATSDragToReorderTableView *)dragTableViewController addDraggableIndicatorsToCell:(UITableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath;
 //	You should set alpha of adjustments to 0 and similar. Will be called inside an animation block.
 //	This should make the cell look like a normal cell, but is not expected to actually be one. 
-- (void)dragTableViewController:(ATSDragToReorderTableViewController *)dragTableViewController hideDraggableIndicatorsOfCell:(UITableViewCell *)cell;
+- (void)dragTableViewController:(ATSDragToReorderTableView *)dragTableViewController hideDraggableIndicatorsOfCell:(UITableViewCell *)cell;
 //	Removes all adjustments to prepare cell for reuse. Will not be animated.
 //	-hideDraggableIndicatorsOfCell: will probably be called before this, but not necessarily.
-- (void)dragTableViewController:(ATSDragToReorderTableViewController *)dragTableViewController removeDraggableIndicatorsFromCell:(UITableViewCell *)cell; 
+- (void)dragTableViewController:(ATSDragToReorderTableView *)dragTableViewController removeDraggableIndicatorsFromCell:(UITableViewCell *)cell; 
 
 @end
 
 
-@interface ATSDragToReorderTableViewController : UITableViewController <UIGestureRecognizerDelegate, ATSDragToReorderTableViewControllerDraggableIndicators>  {
-	NSObject <ATSDragToReorderTableViewControllerDelegate> *dragDelegate;	
-	NSObject <ATSDragToReorderTableViewControllerDraggableIndicators> *indicatorDelegate;
+@interface ATSDragToReorderTableView : UITableView <UIGestureRecognizerDelegate, ATSDragToReorderTableViewDraggableIndicators>  {
+	NSObject <ATSDragToReorderTableViewDelegate> *__unsafe_unretained dragDelegate;	
+	NSObject <ATSDragToReorderTableViewDraggableIndicators> *__unsafe_unretained indicatorDelegate;
 	
 @private
 	// Use setter/getter, not even subclasses should adjust this directly.
@@ -156,8 +156,8 @@
 
 - (BOOL)isDraggingCell;
 
-@property (assign) NSObject <ATSDragToReorderTableViewControllerDelegate> *dragDelegate; // nil by default
-@property (assign) NSObject <ATSDragToReorderTableViewControllerDraggableIndicators> *indicatorDelegate; // self by default
+@property (unsafe_unretained) NSObject <ATSDragToReorderTableViewDelegate> *dragDelegate; // nil by default
+@property (unsafe_unretained) NSObject <ATSDragToReorderTableViewDraggableIndicators> *indicatorDelegate; // self by default
 
 @end
 

@@ -27,20 +27,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _tableView = [[ATSDragToReorderTableView alloc] initWithFrame:CGRectMake(0,0,[self.view bounds].size.width,[self.view bounds].size.height) style:UITableViewStylePlain];
+    [self.view addSubview:_tableView];
+    [_tableView setDelegate:self];
+    [_tableView setDataSource:self];
 
 	self.navigationItem.title = @"Reordering";
 	
 	/*
 		Populate array.
 	 */
-	if (arrayOfItems == nil) {
+	if (self.arrayOfItems == nil) {
 		
 		NSUInteger numberOfItems = 20;
 		
-		arrayOfItems = [[NSMutableArray alloc] initWithCapacity:numberOfItems];
+		self.arrayOfItems = [[NSMutableArray alloc] initWithCapacity:numberOfItems];
 		
 		for (NSUInteger i = 0; i < numberOfItems; ++i)
-			[arrayOfItems addObject:[NSString stringWithFormat:@"Item #%i", i + 1]];
+			[self.arrayOfItems addObject:[NSString stringWithFormat:@"Item #%i", i + 1]];
 	}
 }
 
@@ -66,9 +71,9 @@
 		Disable reordering if there's one or zero items.
 		For this example, of course, this will always be YES.
 	 */
-	[self setReorderingEnabled:( arrayOfItems.count > 1 )];
+	[self.tableView setReorderingEnabled:( self.arrayOfItems.count > 1 )];
 	
-	return arrayOfItems.count;
+	return self.arrayOfItems.count;
 }
 
 
@@ -79,10 +84,10 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-	cell.textLabel.text = [arrayOfItems objectAtIndex:indexPath.row];
+	cell.textLabel.text = [self.arrayOfItems objectAtIndex:indexPath.row];
 	
     return cell;
 }
@@ -92,10 +97,9 @@
  */
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
 	
-	NSString *itemToMove = [[arrayOfItems objectAtIndex:fromIndexPath.row] retain];
-	[arrayOfItems removeObjectAtIndex:fromIndexPath.row];
-	[arrayOfItems insertObject:itemToMove atIndex:toIndexPath.row];
-	[itemToMove release];
+	NSString *itemToMove = [self.arrayOfItems objectAtIndex:fromIndexPath.row];
+	[self.arrayOfItems removeObjectAtIndex:fromIndexPath.row];
+	[self.arrayOfItems insertObject:itemToMove atIndex:toIndexPath.row];
 
 }
 
@@ -130,10 +134,6 @@
 }
 
 
-- (void)dealloc {
-	[arrayOfItems release];
-    [super dealloc];
-}
 
 
 @end

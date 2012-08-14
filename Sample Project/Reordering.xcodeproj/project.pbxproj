@@ -16,7 +16,7 @@
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
 		28F335F11007B36200424DE2 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F335F01007B36200424DE2 /* RootViewController.xib */; };
 		C338732F12CE80FD006F6950 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C338732E12CE80FD006F6950 /* QuartzCore.framework */; };
-		C33CD2841342BE0900560354 /* ATSDragToReorderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C33CD2831342BE0900560354 /* ATSDragToReorderTableViewController.m */; };
+		C33CD2841342BE0900560354 /* ATSDragToReorderTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C33CD2831342BE0900560354 /* ATSDragToReorderTableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,8 +34,8 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Reordering-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Reordering-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		C338732E12CE80FD006F6950 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		C33CD2821342BE0900560354 /* ATSDragToReorderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATSDragToReorderTableViewController.h; path = ../ATSDragToReorderTableViewController.h; sourceTree = "<group>"; };
-		C33CD2831342BE0900560354 /* ATSDragToReorderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATSDragToReorderTableViewController.m; path = ../ATSDragToReorderTableViewController.m; sourceTree = "<group>"; };
+		C33CD2821342BE0900560354 /* ATSDragToReorderTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATSDragToReorderTableView.h; path = ../ATSDragToReorderTableView.h; sourceTree = "<group>"; };
+		C33CD2831342BE0900560354 /* ATSDragToReorderTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATSDragToReorderTableView.m; path = ../ATSDragToReorderTableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,8 +87,8 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				C33CD2821342BE0900560354 /* ATSDragToReorderTableViewController.h */,
-				C33CD2831342BE0900560354 /* ATSDragToReorderTableViewController.m */,
+				C33CD2821342BE0900560354 /* ATSDragToReorderTableView.h */,
+				C33CD2831342BE0900560354 /* ATSDragToReorderTableView.m */,
 				28A0AAE50D9B0CCF005BE974 /* Reordering_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
@@ -181,7 +181,7 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* ReorderingAppDelegate.m in Sources */,
 				28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */,
-				C33CD2841342BE0900560354 /* ATSDragToReorderTableViewController.m in Sources */,
+				C33CD2841342BE0900560354 /* ATSDragToReorderTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +192,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -209,6 +210,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

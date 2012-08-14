@@ -16,11 +16,23 @@
  */
 
 
-#import "RootViewController.h"
+#import "RootTableViewController.h"
 
 
-@implementation RootViewController
+@implementation RootTableViewController
 
+- (id)init
+{
+    self = [super init];
+    if (self)
+    {
+        _tableView = [[ATSDragToReorderTableView alloc] initWithFrame:CGRectMake(0,0,[self.view bounds].size.width,[self.view bounds].size.height) style:UITableViewStylePlain];
+        [self.view addSubview:_tableView];
+        [_tableView setDelegate:self];
+        [_tableView setDataSource:self];
+    }
+    return self;
+}
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -28,10 +40,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _tableView = [[ATSDragToReorderTableView alloc] initWithFrame:CGRectMake(0,0,[self.view bounds].size.width,[self.view bounds].size.height) style:UITableViewStylePlain];
-    [self.view addSubview:_tableView];
-    [_tableView setDelegate:self];
-    [_tableView setDataSource:self];
+    
 
 	self.navigationItem.title = @"Reordering";
 	
@@ -110,6 +119,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
 }
 
 

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ATSDragToReorderTableView.h"
 
-@interface RootViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface RootTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) NSMutableArray *arrayOfItems;
 @property (nonatomic, strong) ATSDragToReorderTableView *tableView;
 @end

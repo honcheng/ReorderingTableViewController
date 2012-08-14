@@ -7,14 +7,10 @@
 //
 
 #import "ReorderingAppDelegate.h"
-#import "RootViewController.h"
+#import "RootTableViewController.h"
 
 
 @implementation ReorderingAppDelegate
-
-@synthesize window;
-@synthesize navigationController;
-
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -24,7 +20,11 @@
     // Override point for customization after application launch.
     
     // Add the navigation controller's view to the window and display.
-    [self.window addSubview:navigationController.view];
+    
+    RootTableViewController *rootViewController = [[RootTableViewController alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
+    [self.window setRootViewController:navigationController];
+    
     [self.window makeKeyAndVisible];
 
     return YES;

@@ -219,7 +219,6 @@ typedef enum {
 - (void)establishGestures {
 	if (self == nil)
 		return;
-	
 	if (longPressGesture == nil) {
 		longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressRecognized)];
 		longPressGesture.delegate = self;
@@ -316,7 +315,8 @@ typedef enum {
 	/*
 	 *	Only allow either gesture to receive that longPressTouch
 	 */
-	return ( touch == longPressTouch );
+    return YES;
+	//return ( touch == longPressTouch );
 }
 
 

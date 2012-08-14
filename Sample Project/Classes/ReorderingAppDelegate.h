@@ -8,12 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ReorderingAppDelegate : NSObject <UIApplicationDelegate> {
-    
-    UIWindow *window;
-    UINavigationController *navigationController;
-}
-
+@interface ReorderingAppDelegate : NSObject <UIApplicationDelegate> 
 @property (nonatomic, strong) IBOutlet UIWindow *window;
 @property (nonatomic, strong) IBOutlet UINavigationController *navigationController;
 
